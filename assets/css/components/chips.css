@@ -1,0 +1,105 @@
+/**
+ * Chips Component
+ * Stack section and technology tags
+ */
+
+/* === Stack Section === */
+.stack-section {
+    margin-top: clamp(32px, 4vw, 32px);
+    text-align: center;
+}
+
+.stack-title {
+    color: var(--plate);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    font-family: var(--font-mono);
+    opacity: .7;
+}
+
+/* === Chips Container === */
+.chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* === Individual Chip === */
+.chip {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: transparent;
+    border: 1px solid var(--chip-border);
+    color: var(--chip-text);
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+    transition: all 0.3s;
+}
+
+.chip:hover {
+    background: rgba(255, 255, 255, .06);
+    border-color: #ffffff;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
+}
+
+/* === Profile Pills === */
+.profile-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    justify-content: center;
+}
+
+.profile-pill {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.68rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: var(--card-dark-1);
+    border: 1px solid var(--chip-border);
+    color: var(--chip-text);
+    letter-spacing: 0.03em;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+    transition: all 0.3s;
+}
+
+.profile-pill:hover {
+    background: rgba(255, 255, 255, .02);
+    border-color: rgba(255, 255, 255, .5);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .35);
+}
+
+/* === Mobile === */
+@media (max-width: 680px) {
+    .stack-section {
+        margin-top: 20px;
+    }
+
+    .stack-title {
+        font-size: 0.65rem;
+        margin-bottom: 10px;
+    }
+
+    .chips {
+        gap: 6px;
+    }
+
+    .chip {
+        padding: 5px 10px;
+        font-size: 0.7rem;
+    }
+}

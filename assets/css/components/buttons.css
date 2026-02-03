@@ -1,0 +1,197 @@
+/**
+ * Button Components
+ * Language switcher and navigation buttons
+ */
+
+/* === Language Switcher === */
+.lang {
+    display: inline-flex;
+    gap: 6px;
+    padding: 4px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    background: rgba(0, 0, 0, .25);
+    backdrop-filter: blur(6px);
+}
+
+.btn {
+    border: 1px solid transparent;
+    background: transparent;
+    color: rgba(255, 255, 255, .75);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: .04em;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.btn:hover {
+    color: #fff;
+}
+
+.btn--active {
+    background: rgba(255, 255, 255, .18);
+    border-color: rgba(255, 255, 255, .3);
+    color: #fff;
+}
+
+/* === Back Button === */
+.back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--chip-border);
+    background: var(--card-dark-1);
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s ease, border-color .2s ease;
+    margin-bottom: 12px;
+    width: fit-content;
+    margin-left: auto;
+    position: sticky;
+    margin-top: 10px;
+    top: 10px;
+    z-index: 2;
+}
+
+.back-btn svg {
+    width: 12px;
+    height: 12px;
+    stroke: var(--chip-text);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke .2s ease;
+}
+
+.back-btn:hover {
+    background: #3a424a;
+    border-color: #fff;
+}
+
+.back-btn:hover svg {
+    stroke: #fff;
+}
+
+body[data-view="profile"] .back-btn {
+    display: flex;
+}
+
+/* === Contact Links === */
+.contact-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 2vw, 18px);
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--plate);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    transition: all 0.3s;
+    padding: 2px 4px;
+}
+
+.contact-link:hover {
+    transform: translateY(-1px);
+    color: #ffffff;
+}
+
+.contact-link svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    stroke: currentColor;
+    flex-shrink: 0;
+    transition: color 0.3s;
+    opacity: .85;
+    display: block;
+}
+
+.contact-link--email svg {
+    transform: scale(1);
+}
+
+.contact-link--linkedin svg {
+    transform: scale(0.75);
+}
+
+.contact-link svg path {
+    fill: currentColor;
+}
+
+.contact-link span {
+    white-space: nowrap;
+    color: var(--plate);
+    transition: color 0.3s;
+}
+
+.contact-link:hover span,
+.contact-link:hover svg {
+    color: #ffffff;
+}
+
+/* === Mobile === */
+@media (max-width: 680px) {
+    .lang {
+        margin-bottom: 16px;
+        order: 2;
+        width: auto;
+        justify-content: center;
+        margin-bottom: 0;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .back-btn {
+        margin-top: -23px;
+        margin-bottom: 8px;
+        top: 0;
+        padding: 3px 6px;
+        gap: 0;
+    }
+
+    .back-btn svg {
+        width: 10px;
+        height: 10px;
+    }
+
+    .contact-links {
+        gap: 14px;
+        order: 1;
+        width: auto;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    body[data-view="profile"] .contact-links {
+        justify-content: center;
+    }
+
+    .contact-link {
+        font-size: 0.75rem;
+    }
+
+    .contact-link span {
+        display: none;
+    }
+
+    .contact-link svg {
+        width: 22px;
+        height: 22px;
+    }
+}

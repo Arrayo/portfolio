@@ -1,0 +1,343 @@
+/**
+ * Profile Component
+ * Profile content, experience items, skills, and education
+ */
+
+/* === Profile Content Container === */
+.profile-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: clamp(22px, 3vw, 24px);
+    background: var(--paper-surface);
+    border: 2px solid rgba(0, 0, 0, .20);
+    border-radius: 2px;
+    box-shadow: 0 22px 60px rgba(0, 0, 0, .55);
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-content::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 18% 30%, rgba(0, 0, 0, .08), transparent 55%),
+        radial-gradient(circle at 88% 70%, rgba(0, 0, 0, .06), transparent 55%);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+/* === Inner Content === */
+.profile-content-inner {
+    position: relative;
+    padding: clamp(22px, 3.2vw, 36px);
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.profile-content-inner::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Scroll hint gradient */
+.profile-content-inner::after {
+    content: "";
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 16px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(10, 14, 18, 0), rgba(10, 14, 18, .14));
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+
+.profile-content-inner.scroll-hint::after {
+    opacity: 1;
+}
+
+/* === Typography === */
+.profile-content h2 {
+    margin: 0 0 12px 0;
+    margin-top: -42px;
+    font-family: var(--font-serif);
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -.01em;
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+}
+
+.profile-content p {
+    margin: 0 0 14px 0;
+    font-size: 0.94rem;
+    line-height: 1.7;
+    color: rgba(0, 0, 0, .78);
+}
+
+.profile-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* === Experience Item === */
+.experience-item {
+    margin-top: 16px;
+}
+
+.experience-item h3 {
+    margin: 0 0 6px 0;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--ink);
+    font-family: var(--font-serif);
+}
+
+.experience-meta {
+    font-size: 0.82rem;
+    color: rgba(0, 0, 0, .55);
+    margin-bottom: 8px;
+}
+
+/* === Experience List === */
+.experience-list {
+    margin: 0;
+    padding-left: 0;
+    color: rgba(0, 0, 0, .75);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    list-style: none;
+}
+
+.experience-list li {
+    margin: 6px 0;
+    padding-left: 16px;
+    position: relative;
+}
+
+/* Bullet styling */
+.experience-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 7px;
+    height: 7px;
+    background: rgba(0, 0, 0, .35);
+}
+
+.experience-list li:nth-child(3n + 1)::before {
+    border-radius: 2px;
+}
+
+.experience-list li:nth-child(3n + 2)::before {
+    border-radius: 50%;
+}
+
+.experience-list li:nth-child(3n + 3)::before {
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.experience-list a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dashed rgba(0, 0, 0, .25);
+    padding-bottom: 1px;
+}
+
+.experience-list a:hover {
+    color: var(--ink2);
+}
+
+/* === Education Block === */
+.edu-block {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: none;
+}
+
+.edu-title {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+}
+
+.edu-list {
+    margin: 0;
+    padding-left: 0;
+    color: rgba(0, 0, 0, .75);
+    font-size: 0.94rem;
+    line-height: 1.7;
+    font-family: var(--font-sans);
+    list-style: none;
+}
+
+.edu-list li {
+    margin: 6px 0;
+    padding-left: 16px;
+    position: relative;
+}
+
+.edu-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 7px;
+    height: 7px;
+    background: rgba(0, 0, 0, .35);
+}
+
+.edu-list li:nth-child(1)::before { border-radius: 2px; }
+.edu-list li:nth-child(2)::before { border-radius: 50%; }
+.edu-list li:nth-child(3)::before { clip-path: polygon(0 0, 100% 50%, 0 100%); }
+
+/* === Skills Block === */
+.skills-block {
+    margin-top: 16px;
+}
+
+.skills-title {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+}
+
+.skills-list {
+    margin: 0;
+    padding-left: 0;
+    color: rgba(0, 0, 0, .75);
+    font-size: 0.94rem;
+    line-height: 1.7;
+    font-family: var(--font-sans);
+    list-style: none;
+}
+
+.skills-list li {
+    margin: 6px 0;
+    padding-left: 16px;
+    position: relative;
+}
+
+.skills-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 7px;
+    height: 7px;
+    background: rgba(0, 0, 0, .35);
+}
+
+.skills-list li:nth-child(1)::before { border-radius: 2px; }
+.skills-list li:nth-child(2)::before { border-radius: 50%; }
+.skills-list li:nth-child(3)::before { clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.skills-list li:nth-child(4)::before { border-radius: 2px; }
+.skills-list li:nth-child(5)::before { border-radius: 50%; }
+.skills-list li:nth-child(6)::before { clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.skills-list li:nth-child(7)::before { border-radius: 2px; }
+
+/* === Languages Block === */
+.languages-block {
+    margin-top: 16px;
+}
+
+.languages-title {
+    font-family: var(--font-serif);
+    font-weight: 800;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin: 0 0 6px 0;
+}
+
+.languages-list {
+    margin: 0;
+    padding-left: 0;
+    color: rgba(0, 0, 0, .75);
+    font-size: 0.94rem;
+    line-height: 1.7;
+    font-family: var(--font-sans);
+    list-style: none;
+}
+
+.languages-list li {
+    margin: 6px 0;
+    padding-left: 16px;
+    position: relative;
+}
+
+.languages-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 7px;
+    height: 7px;
+    background: rgba(0, 0, 0, .35);
+}
+
+.languages-list li:nth-child(1)::before { border-radius: 2px; }
+.languages-list li:nth-child(2)::before { border-radius: 50%; }
+
+/* === Detail CTA === */
+.detail-cta {
+    margin-top: 16px;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, .7);
+    font-family: var(--font-sans);
+    text-align: center;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.detail-cta-links {
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-style: normal;
+}
+
+.detail-cta a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(0, 0, 0, .35);
+    padding-bottom: 1px;
+}
+
+.detail-cta a:hover {
+    color: var(--ink2);
+    border-bottom-color: rgba(0, 0, 0, .55);
+}
+
+.detail-cta-icon {
+    width: 8px;
+    height: 8px;
+    background: var(--card-dark-1);
+    display: inline-block;
+    margin-left: 12px;
+}
+
+.detail-cta-icon:first-child {
+    margin-left: 0;
+}
+
+.detail-cta-icon--circle { border-radius: 50%; }
+.detail-cta-icon--triangle { clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.detail-cta-icon--square { border-radius: 2px; }
+
+/* === Mobile === */
+@media (max-width: 680px) {
+    .profile-content h2 {
+        margin-top: -8px;
+    }
+}

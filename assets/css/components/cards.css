@@ -1,0 +1,159 @@
+/**
+ * Section Cards Component
+ * Navigation shapes (square, circle, triangle)
+ */
+
+/* === Cards Container === */
+.section-cards {
+    display: flex;
+    justify-content: center;
+    gap: clamp(14px, 2vw, 38px);
+    margin-top: clamp(20px, 3vw, 32px);
+    flex-wrap: nowrap;
+}
+
+/* === Shape Item (wrapper) === */
+.shape-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.shape-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--plate);
+    opacity: .8;
+}
+
+/* === Section Card Base === */
+.section-card {
+    width: clamp(84px, 10vw, 112px);
+    height: clamp(84px, 10vw, 112px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow .3s ease, border-color .3s ease;
+    position: relative;
+    background:
+        radial-gradient(circle at 20% 25%, rgba(0, 0, 0, .05), transparent 38%),
+        radial-gradient(circle at 85% 75%, rgba(0, 0, 0, .04), transparent 42%),
+        linear-gradient(135deg, #e7e3da 0%, #d8d2c7 100%);
+    border: 1px solid rgba(0, 0, 0, .12);
+    box-shadow:
+        3px 3px 0 rgba(0, 0, 0, .28),
+        0 6px 16px rgba(0, 0, 0, .25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Inner gradient overlay */
+.section-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 25%, rgba(0, 0, 0, .06), transparent 40%),
+        radial-gradient(circle at 85% 75%, rgba(0, 0, 0, .05), transparent 45%);
+    mix-blend-mode: multiply;
+    opacity: .4;
+    pointer-events: none;
+}
+
+/* === Shape Icon === */
+.shape-icon {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    color: rgba(0, 0, 0, .35);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+}
+
+/* === Shape Variants === */
+.section-card--square {
+    border-radius: 4px;
+}
+
+.section-card--circle {
+    border-radius: 50%;
+}
+
+.section-card--triangle {
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    border-radius: 0;
+    overflow: visible;
+}
+
+.section-card--triangle::after {
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    border-radius: 0;
+}
+
+/* === Hover States === */
+.shape-item:hover .section-card {
+    transform: translateY(-5px);
+    border-color: rgba(0, 0, 0, .2);
+    box-shadow:
+        4px 4px 0 rgba(0, 0, 0, .24),
+        0 14px 30px rgba(0, 0, 0, .35),
+        0 0 18px rgba(208, 204, 196, .35);
+    filter: saturate(1.02);
+}
+
+.shape-item:hover .shape-icon {
+    opacity: 0.6;
+    transform: scale(1);
+}
+
+/* === Card Title (hidden by default) === */
+.section-card-title {
+    color: var(--ink);
+    font-size: 0.7rem;
+    font-weight: 800;
+    font-family: var(--font-serif);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0;
+}
+
+.section-card-title--lined {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    padding-bottom: 8px;
+    width: 100%;
+    text-align: center;
+}
+
+.section-card-desc,
+.section-card-desc--sm,
+.section-card-cta {
+    display: none;
+}
+
+/* === Mobile === */
+@media (max-width: 680px) {
+    .section-cards {
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+        margin-top: 20px;
+    }
+
+    .section-card {
+        width: 72px;
+        height: 72px;
+    }
+
+    .shape-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.05em;
+    }
+
+    .section-card--triangle .section-card-inner {
+        padding: 6px 6px 6px 18px;
+    }
+}

@@ -1,0 +1,75 @@
+/**
+ * CSS Custom Properties
+ * Single source of truth for design tokens
+ */
+
+:root {
+    /* === Background Colors === */
+    --bg: #0a0a0a;
+    --body-bg: #e6e2d9;
+    --body-bg2: #dedad2;
+
+    /* === Card Colors === */
+    --card-dark-1: #0a0e12;
+    --card-dark-2: #08090c;
+    --card-dark-3: #0a0a0f;
+
+    /* === Plate Colors === */
+    --plate: #d0ccc4;
+    --plate2: #b6b1a7;
+    --plate-border: #2a2a2a;
+
+    /* === Text Colors === */
+    --ink: #2d2d2d;
+    --ink2: rgba(45, 45, 45, .7);
+
+    /* === UI Colors === */
+    --uiLine: rgba(255, 255, 255, .18);
+    --uiBg: rgba(0, 0, 0, .28);
+    --uiBgOn: rgba(255, 255, 255, .10);
+    --uiText: rgba(255, 255, 255, .86);
+
+    /* === Chip Colors === */
+    --chip-border: rgba(234, 234, 234, .5);
+    --chip-text: rgba(234, 234, 234, .85);
+
+    /* === Footer === */
+    --footer-divider: #555;
+
+    /* === Shadows === */
+    --shadow: 0 12px 40px rgba(0, 0, 0, .7);
+    --shadow2: 0 8px 24px rgba(0, 0, 0, .6);
+
+    /* === Typography === */
+    --font-sans: 'IBM Plex Sans', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+    /* === Spacing === */
+    --page-pad: clamp(20px, 3vw, 40px);
+    --main-card-height: 676px;
+
+    /* === Surfaces (complex gradients) === */
+    --paper-surface:
+        radial-gradient(circle at 15% 25%, rgba(139, 115, 85, .04), transparent 35%),
+        radial-gradient(circle at 82% 18%, rgba(139, 115, 85, .03), transparent 40%),
+        radial-gradient(circle at 50% 88%, rgba(139, 115, 85, .03), transparent 38%),
+        radial-gradient(circle at 88% 75%, rgba(139, 115, 85, .02), transparent 30%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, .01) 2px, rgba(0, 0, 0, .01) 4px),
+        linear-gradient(135deg, var(--plate) 0%, var(--plate2) 100%);
+
+    --body-surface:
+        radial-gradient(circle at 15% 25%, rgba(139, 115, 85, .04), transparent 35%),
+        radial-gradient(circle at 82% 18%, rgba(139, 115, 85, .03), transparent 40%),
+        radial-gradient(circle at 50% 88%, rgba(139, 115, 85, .03), transparent 38%),
+        radial-gradient(circle at 88% 75%, rgba(139, 115, 85, .02), transparent 30%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, .01) 2px, rgba(0, 0, 0, .01) 4px),
+        linear-gradient(135deg, var(--body-bg) 0%, var(--body-bg2) 100%);
+}
+
+/* === Mobile Overrides === */
+@media (max-width: 680px) {
+    :root {
+        --page-pad: 12px;
+    }
+}
