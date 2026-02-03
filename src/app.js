@@ -26,6 +26,7 @@
             ogDescription: 'Desarrollador Full Stack | React + TypeScript | GraphQL & REST | Node.js',
             authorName: 'Francisco Caballero Portero',
             authorAlt: 'Francisco Caballero Portero',
+            avatarAction: 'Ver repositorio en GitHub',
             
             // Header
             subtitle: 'Desarrollador Full Stack | React + TypeScript | GraphQL & REST | Node.js',
@@ -144,6 +145,7 @@
             ogDescription: 'Full Stack Developer | React + TypeScript | GraphQL & REST | Node.js',
             authorName: 'Francisco Caballero Portero',
             authorAlt: 'Francisco Caballero Portero',
+            avatarAction: 'View repository on GitHub',
             
             // Header
             subtitle: 'Full Stack Developer | React + TypeScript | GraphQL & REST | Node.js',
@@ -368,6 +370,12 @@
                 if (dict[key]) el.setAttribute('alt', dict[key]);
             });
             
+            // Title attributes
+            document.querySelectorAll('[data-i18n-title]').forEach(function(el) {
+                const key = el.getAttribute('data-i18n-title');
+                if (dict[key]) el.setAttribute('title', dict[key]);
+            });
+            
             // Meta content attributes
             document.querySelectorAll('[data-i18n-content]').forEach(function(el) {
                 const key = el.getAttribute('data-i18n-content');
@@ -453,6 +461,21 @@
                 btn.addEventListener('click', function() { self.goHome(); });
             });
 
+            // Avatar click -> GitHub repo
+            var avatar = document.querySelector('.avatar');
+            if (avatar) {
+                var openRepo = function() {
+                    window.open('https://github.com/Arrayo/portfolio', '_blank', 'noopener');
+                };
+                avatar.addEventListener('click', openRepo);
+                avatar.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        openRepo();
+                    }
+                });
+            }
+
             // Keyboard navigation
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && self.currentView !== 'home') {
@@ -474,6 +497,7 @@
             this.currentView = view;
             document.body.dataset.view = view;
             
+            window.scrollTo(0, 0);
             this.updateAriaStates(view);
             this.triggerFadeAnimation();
             this.resetScroll(view);
