@@ -509,10 +509,18 @@
         },
 
         updateAriaStates: function(activeView) {
+            document.activeElement?.blur();
+            
             ['home', 'profile', 'experience', 'projects'].forEach(function(view) {
                 const el = document.querySelector('.view--' + view);
                 if (el) {
-                    el.setAttribute('aria-hidden', view !== activeView ? 'true' : 'false');
+                    if (view !== activeView) {
+                        el.inert = true;
+                        el.setAttribute('aria-hidden', 'true');
+                    } else {
+                        el.inert = false;
+                        el.removeAttribute('aria-hidden');
+                    }
                 }
             });
         },
@@ -522,7 +530,7 @@
             if (!mainCard) return;
             
             mainCard.classList.remove('fade-in');
-            void mainCard.offsetWidth; // Force reflow
+            void mainCard.offsetWidth;
             mainCard.classList.add('fade-in');
         },
 

@@ -7,7 +7,7 @@
 .footer-links {
     margin-top: clamp(18px, 3vw, 28px);
     padding-top: 26px;
-    padding-bottom: 16px;
+    padding-bottom: 0;
     border-top: 1px dotted var(--footer-divider);
     display: flex;
     justify-content: center;
@@ -47,11 +47,17 @@ body[data-view="projects"] .footer-links {
     .footer-links {
         margin-top: 16px;
         padding-top: 16px;
-        padding-bottom: 12px;
+        padding-bottom: 0;
         margin-bottom: 0;
     }
 
     .footer-links a[data-i18n="footerUdemy"] {
         font-size: 0.72rem;
+    }
+
+    body[data-view="profile"] .footer-links,
+    body[data-view="experience"] .footer-links,
+    body[data-view="projects"] .footer-links {
+        padding-top: 12px;
     }
 }
