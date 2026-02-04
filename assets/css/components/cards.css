@@ -110,30 +110,6 @@
     transform: scale(1);
 }
 
-/* === Card Title (hidden by default) === */
-.section-card-title {
-    color: var(--ink);
-    font-size: 0.7rem;
-    font-weight: 800;
-    font-family: var(--font-serif);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin: 0;
-}
-
-.section-card-title--lined {
-    border-bottom: 1px solid rgba(0, 0, 0, .1);
-    padding-bottom: 8px;
-    width: 100%;
-    text-align: center;
-}
-
-.section-card-desc,
-.section-card-desc--sm,
-.section-card-cta {
-    display: none;
-}
-
 /* === Mobile === */
 @media (max-width: 680px) {
     .section-cards {
@@ -153,7 +129,4 @@
         letter-spacing: 0.05em;
     }
 
-    .section-card--triangle .section-card-inner {
-        padding: 6px 6px 6px 18px;
-    }
 }

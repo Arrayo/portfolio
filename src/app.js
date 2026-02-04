@@ -263,7 +263,6 @@
     // ============================================
     
     const SEWAN_START_DATE = new Date(2021, 2, 1); // March 2021
-    const BIRTH_DATE = new Date(1978, 9, 15); // October 15, 1978
 
     /**
      * Calculate tenure from a start date to now
@@ -300,27 +299,18 @@
         return months > 0 ? y + ' ' + m : y;
     }
 
-    /**
-     * Calculate age from birth date
-     */
-    function calculateAge(birthDate) {
-        const today = new Date();
-        let age = today.getFullYear() - birthDate.getFullYear();
-        const monthDiff = today.getMonth() - birthDate.getMonth();
-        
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-        
-        return age;
-    }
-
     // ============================================
     // LANGUAGE SERVICE
     // ============================================
     
     const LanguageService = {
-        currentLang: localStorage.getItem('lang') || 'es',
+        currentLang: (function() {
+            try {
+                return localStorage.getItem('lang') || 'es';
+            } catch (e) {
+                return 'es';
+            }
+        })(),
 
         getDictionary: function(lang) {
             return translations[lang || this.currentLang] || translations.es;
@@ -330,7 +320,11 @@
             if (!translations[lang]) return;
             
             this.currentLang = lang;
-            localStorage.setItem('lang', lang);
+            try {
+                localStorage.setItem('lang', lang);
+            } catch (e) {
+                // Storage unavailable (private mode, etc.)
+            }
             document.documentElement.lang = lang;
             
             this.applyTranslations();
@@ -564,12 +558,6 @@
         
         // Initialize navigation
         NavigationService.init();
-        
-        // Update age if element exists
-        const ageEl = document.getElementById('age');
-        if (ageEl) {
-            ageEl.textContent = String(calculateAge(BIRTH_DATE));
-        }
         
         // Window resize handler
         window.addEventListener('resize', function() {
